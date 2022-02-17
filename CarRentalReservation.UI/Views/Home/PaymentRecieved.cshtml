@@ -1,0 +1,42 @@
+﻿@model CarRentalReservation.UI.Models.PaymentViewModel
+@{
+    ViewBag.Title = "PaymentRecieved ";
+}
+
+<h2>Payment</h2>
+
+<div class="card">
+
+    <div class=" card-body">
+
+
+        @using (Html.BeginForm("PaymentRecieved", "Home", FormMethod.Post, new { htmlAttributes = new { @class = "form-horizontal", role = "form" } }))
+        {
+        <div class="form-group">
+            <div>Customer Firstname</div>
+
+            @Html.HiddenFor(m => m.customer.CustomerId);
+
+            @Html.TextBoxFor(model => model.customer.FirstName, new { @class = "form-control" })
+            <div>Customer Surname</div>
+            @Html.TextBoxFor(m => m.customer.LastName, new { @class = "form-control" })
+
+            <div>Start date</div>
+            @Html.TextBoxFor(m => m.customer.StartDate, "", new { id = "txtStartDate", @class = "form-control" })
+            <div>Return Date</div>
+            @Html.TextBoxFor(m => m.customer.ReturnDate, "", new { id = "txtReturnDate", @class = "form-control" })
+            <div>Car Registration Number</div>
+            @Html.TextBoxFor(m => m.customer.CarRegNo, "", new { id = "txtReturnDate", @class = "form-control" })
+            <div>Payment Total</div>
+            @Html.TextBoxFor(m => m.payment.PaymentTotal, "", new { id = "flPaymentTotal", @readonly = "readonly", @class = "form-control" })
+
+
+        </div>
+            <div style="height:20px;"></div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit" name="action" value="UpdatePayment">Submit</button>
+            </div>
+            <div style="height:20px;"></div>
+        }
+    </div>
+</div>

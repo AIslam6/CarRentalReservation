@@ -1,0 +1,118 @@
+﻿@model CarRentalReservation.UI.Models.CarViewModel
+
+@{
+    ViewBag.Title = "Car";
+}
+<style>
+    /*input,
+    select,
+    textarea {
+        max-width: px;
+    }*/
+    input{max-width:1140px;}
+    .wid{
+        width: 100%;
+    }
+</style>
+@*<div class="jumbotron">*@
+<div class="card">
+    <!-- /.login-logo -->
+    <div class=" card-body">
+        @using (Html.BeginForm("Car", "Home", new { returnUrl = ViewBag.ReturnUrl }))
+        {
+            <h3>List of Cars</h3>
+            @*<div style="height:10px;"></div>
+            <div><strong>Available </strong></div>
+       
+
+            // {
+                var carsAvailableList = new SelectList(new []
+                {
+                    //new SelectListItem { Text = "", Value = ".com", Selected = true },
+                    new SelectListItem { Text = "Not booked", Value = "True"},
+                    new SelectListItem { Text = "Booked", Value = "False"},
+              
+                }, "Value", "Text");
+           // }
+           // @Html.DropDownList("availableCars", carsAvailableList)
+             @Html.DropDownListFor(m => m.Available, carsAvailableList, "Please select", new { id = "DdlAvailable", @class = "form-control width " })*@
+             @*@Html.ValidationMessageFor(m => m.ddvm.BcIdInput, null, new { @class = "text-danger" })*@ 
+            <div style="height:10px;"></div>
+            
+            <input type="text" class="wid form-control" id="CarInput" onkeyup="SearchCar()" placeholder="Search for car availability" title="Type in a name">
+                                 
+             <div style="height:10px;"></div>
+            
+            <table  class="table" id="CarsTable"> 
+
+                <thead>
+                    <tr>
+                        <th>CarRegNo</th> 
+                        <th>Availability</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (CarRentalReservation.DTO.Car ca in Model.Cars)
+                    {
+                        <tr class="form-group">
+                            <td>@ca.CarModel</td>
+                            <td>@ca.Availability</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+
+                                <button class="btn btn-primary float-right" type="button" onclick="location.href='@Url.Action("Edit", new { id = @ca.CarModel } )'"><i class="fa fa-pencil"></i> View</button>
+
+                                @*<button class="btn btn-primary float-right form-control" type="button">View</button>*@
+
+                                @*
+                                    <button class="btn btn-primary float-right" type="button" onclick="location.href='@Url.Action("Edit", new { id = @item.PatientDemographicDetails.PatientId } )'"><i class="fa fa-pencil"></i> View</button>
+                                *@
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+@*</div>*@
+<script>
+    function SearchCar() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("CarInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("CarsTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+

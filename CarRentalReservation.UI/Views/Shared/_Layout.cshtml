@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0">*@
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <title>@ViewBag.Title - Car Rental Reservation</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    
+
+    <link href="~/css/jquery-ui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    @*<link href="~/css/jquery-ui.min.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
+    @*<link rel="stylesheet" href="~/css/WAHT.css">*@
+
+    <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+</head>
+<body>
+
+        <nav class="navbar navbar-expand navbar-dark bg-primary">
+            <a class="sidebar-toggle mr-3" href="#"><i class="fa fa-bars"></i></a>
+            <a class="navbar-brand" href="#"><b>Car Rental</b> Reservation</a>
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav">
+                    <li class="nav-item"><a href="~/Home/Index" class="nav-link">Home</a></li>
+
+                    <li><a href="~/Home/Add" class="nav-link">Add Car</a></li>
+
+                    <li class="dropdown">
+
+
+                        <a runat="server" href="#" class="dropdown-toggle nav-link" style="text-decoration:none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuration <span class="caret"></span> </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="~/Configuration/BurialType"><strong>Maintain Cars</strong></a></li>
+                            <li><a class="dropdown-item" href="~/Configuration/Doctor"><strong>Maintain Customers</strong></a></li>
+                            @*<li><a class="dropdown-item" href="~/Configuration/FuneralDirector"><strong>Funeral Director</strong></a></li>
+                            <li><a class="dropdown-item" href="~/Configuration/MedicalExaminer"><strong>Medical Examiner</strong></a></li>
+                            <li><a class="dropdown-item" href="~/Configuration/MccdIssued"><strong>Mccd Issued</strong></a></li>*@
+
+                        </ul>
+                    </li>
+                </ul>
+
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        @*<a href="@Url.Action("Logout", "Security")" class="nav-link">@CurrentUser.DisplayName <i class="fa fa-power-off"></i></a>*@
+
+                        <a href="@Url.Action("Logout", "Security")" class="nav-link"> <i class="fa fa-power-off"></i></a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+    
+
+    <div class="d-flex">
+        @*<div class="sidebar sidebar-dark bg-dark toggled">
+            <ul class="list-unstyled">
+                <li class="nav-title">Nav Title</li>
+                <li><a href="#"><i class="fa fa-fw fa-link"></i> Menu Item</a></li>*@
+                @*<li>
+                    <a href="#sm_expand_1" data-toggle="collapse">
+                        <i class="fa fa-fw fa-link"></i> Expandable Menu Item
+                    </a>
+                    <ul id="sm_expand_1" class="list-unstyled collapse">
+                        <li><a href="#">Submenu Item</a></li>
+                        <li><a href="#">Submenu Item</a></li>
+                    </ul>
+                </li>*@
+                @*<li><a href="#"><i class="fa fa-fw fa-link"></i> Menu Item</a></li>
+                <li><a href="#"><i class="fa fa-fw fa-link"></i> Menu Item</a></li>*@
+                @*@if (CurrentUser.IsInRole("Administrator"))
+                {
+                    <li class="nav-title">Admin Area</li>
+                    <li><a href="#"><i class="fa fa-fw fa-link"></i> Menu Item</a></li>
+                    <li><a href="#"><i class="fa fa-fw fa-link"></i> Menu Item</a></li>
+                }*@
+            @*</ul>*@
+        @*</div>*@
+
+
+        <div class="container body-content">
+            @RenderBody()
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Car Rental Reservation</p>
+            </footer>
+        </div>
+
+
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+
+        <script src="~/js/jquery.min.js"></script>
+        @*<script src="~/Scripts/jquery.validate.min.js"></script>*@
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/Scripts/umd/popper.min.js"></script>
+        <script src="~/js/moment.min.js"></script>
+        <script src="~/js/jquery-ui.min.js"></script>
+        <script src="~/js/bootstrap.bundle.min.js"></script>
+
+        <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+        <script src="~/js/WAHT.js"></script>
+        @*@RenderSection("scripts", required: false)*@
+        @RenderSection("scripts", required: false)
+
+
+
+
+</body>
+</html>

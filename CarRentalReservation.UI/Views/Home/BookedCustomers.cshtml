@@ -1,0 +1,76 @@
+﻿@model CarRentalReservation.UI.Models.BookedViewModel
+
+@{
+    ViewBag.Title = "Booked Customers";
+}
+
+<style>
+    .wid {
+        width: 100%;
+    }
+</style>
+
+@*<div class="jumbotron">*@
+<div class="card">
+    <!-- /.login-logo -->
+    <div class=" card-body">
+        @using (Html.BeginForm("BookedCustomers", "Home", new { returnUrl = ViewBag.ReturnUrl }))
+        {
+            <h3>List of Booked customers</h3>
+
+            <input type="text" class="wid form-control" id="CustomerInput" onkeyup="SearchCustomer()" placeholder="Search for customer" title="Type in a name">
+
+            <table class="table" id="CustomerTable">
+                <thead>
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Surname</th>
+                        <th>Booked</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (CarRentalReservation.DTO.Customer cu in Model.BookedCustomers)
+                    {
+                        <tr class="form-group">
+                            <td>@cu.FirstName</td>
+                            <td>@cu.LastName</td>
+                            <td>@cu.BookingId</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+
+                                <button class="btn btn-primary float-right" type="button" onclick="location.href='@Url.Action("Edit", new { id = @cu.CustomerId } )'"><i class="fa fa-pencil"></i> Book</button>
+                                <button class="btn btn-primary float-right" type="button" onclick="location.href='@Url.Action("Cars", new { id = @cu.CustomerId } )'"><i class="fa fa-pencil"></i> Cars</button>
+
+
+
+                                @*<button class="btn btn-primary float-right form-control" type="button">View</button>*@
+
+                                @*
+                                    <button class="btn btn-primary float-right" type="button" onclick="location.href='@Url.Action("Edit", new { id = @item.PatientDemographicDetails.PatientId } )'"><i class="fa fa-pencil"></i> View</button>
+                                *@
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+@*</div>*@

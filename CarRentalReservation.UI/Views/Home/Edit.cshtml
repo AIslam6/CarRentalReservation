@@ -1,0 +1,114 @@
+﻿@model CarRentalReservation.UI.Models.EditViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Booking</h2>
+
+@*<div class="jumbotron">*@
+<div class="card">
+    <!-- /.login-logo -->
+    <div class=" card-body">
+        @*@using (Html.BeginForm("Edit", "Home", new { returnUrl = ViewBag.ReturnUrl }))*@
+
+        @using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { htmlAttributes = new { @class = "form-horizontal", role = "form" } }))
+        {
+            <div class="form-group">
+                <div>Customer Firstname</div>
+
+                @Html.HiddenFor(m => m.booking.CustomerId);
+
+                @Html.TextBoxFor(model => model.booking.CustomerFirstName, new { @class = "form-control" })
+                <div>Customer Surname</div>
+                @Html.TextBoxFor(m => m.booking.CustomerSurname, new { @class = "form-control" })
+
+                <div>Start date</div>
+                @Html.TextBoxFor(m => m.booking.StartDate, "", new { id = "txtStartDate", @class = "form-control" })
+                <div>Return Date</div>
+                @Html.TextBoxFor(m => m.booking.ReturnDate, "", new { id = "txtReturnDate", @class = "form-control" })
+
+
+            </div>
+
+
+            <div>Cars Available</div> // HAVE TO DISPLAY Cars THAT ARE NOT BOOKED, i.e. HAS NO 'BookingId' IN THEIR RECORDS
+
+            //var carsAvailableList = new SelectList(new[]
+            //{
+            //    //new SelectListItem { Text = "", Value = ".com", Selected = true },
+            //    new SelectListItem { Text = "Y695 JEP", Value = "Y695JEP"},             // has to be Cars that are Not Booked...
+            //    new SelectListItem { Text = "WM09 AFK", Value = "WM09 AFK"},            // has to be Cars that are Not Booked...
+            //    new SelectListItem { Text = "4WRW DSFJ", Value = "4WRW DSFJ"},          // has to be Cars that are Not Booked...
+
+            //}, "Value", "Text");
+
+
+            @Html.DropDownListFor(m => m.booking.CarRegNumber, Model.CarList, "Please select", new { id = "DdlCarRegNumber", @class = "form-control width " })
+
+
+            <div style="height:20px;"></div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit" name="action" value="UpdateBooking">Save</button>
+            </div>
+            <div style="height:20px;"></div>
+
+
+        }
+    </div>
+</div>
+
+
+@*
+
+////////////////////PAYMENT RECEIVED PAGE/////BEGIN/////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+    
+<h3>Payment</h3>
+
+<div class="card">
+
+    <div class=" card-body">
+
+
+
+        @using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { htmlAttributes = new { @class = "form-horizontal", role = "form" } }))
+        {
+
+            <div class="form-group">
+                <div>Customer Firstname</div>
+
+                @Html.HiddenFor(m => m.customer.CustomerId);
+
+                @Html.TextBoxFor(model => model.customer.FirstName, new { @class = "form-control" })
+                <div>Customer Surname</div>
+                @Html.TextBoxFor(m => m.customer.LastName, new { @class = "form-control" })
+
+                <div>Start date</div>
+                @Html.TextBoxFor(m => m.customer.StartDate, "", new { id = "txtStartDate", @class = "form-control" })
+                <div>Return Date</div>
+                @Html.TextBoxFor(m => m.customer.ReturnDate, "", new { id = "txtReturnDate", @class = "form-control" })
+                <div>Car Registration Number</div>
+                @Html.TextBoxFor(m => m.customer.CarRegNo, "", new { id = "txtReturnDate", @class = "form-control" })
+                <div>Payment Total</div>
+                @Html.TextBoxFor(m => m.customer.PaymentTotal, "", new { id = "flPaymentTotal", @readonly = "readonly", @class = "form-control" })
+
+
+            </div>
+            <div style="height:20px;"></div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit" name="action" value="UpdatePayment">Submit</button>
+            </div>
+            <div style="height:20px;"></div>
+        }
+    </div>
+</div>
+
+
+            ////////////////////PAYMENT RECEIVED PAGE/////END/////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    *@
+
+
